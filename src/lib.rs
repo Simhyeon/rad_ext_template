@@ -5,6 +5,7 @@ const CRATE_NAME: &str = "crate";
 #[cfg(not(feature = "binary"))]
 const CRATE_NAME: &str = "r4d";
 
+/// Create function macro signature
 #[proc_macro]
 pub fn function_template(item: TokenStream) -> TokenStream {
     format!(
@@ -17,6 +18,7 @@ pub fn function_template(item: TokenStream) -> TokenStream {
     .unwrap()
 }
 
+/// Create deterred macro signature
 #[proc_macro]
 pub fn deterred_template(item: TokenStream) -> TokenStream {
     format!(
@@ -29,7 +31,7 @@ pub fn deterred_template(item: TokenStream) -> TokenStream {
     .unwrap()
 }
 
-/// Deterred macro argument expansion and strip
+/// Deterred macro's argument expansion and strip
 ///
 /// # Usage
 ///
@@ -55,6 +57,8 @@ pub fn expand_expr(item: TokenStream) -> TokenStream {
 
 /// Split arguments
 ///
+/// # Usage
+///
 /// split_args!(len,args,bool)
 #[proc_macro]
 pub fn split_args(item: TokenStream) -> TokenStream {
@@ -63,6 +67,11 @@ pub fn split_args(item: TokenStream) -> TokenStream {
         .unwrap()
 }
 
+/// Audith authentication
+///
+/// # Usage
+///
+/// audit_auth("macro_name", AuthType::CMD)
 #[proc_macro]
 pub fn audit_auth(item: TokenStream) -> TokenStream {
     let token_string = item.to_string();
