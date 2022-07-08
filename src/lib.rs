@@ -58,7 +58,7 @@ pub fn expand_expr(item: TokenStream) -> TokenStream {
 /// split_args!(len,args,)
 #[proc_macro]
 pub fn split_args(item: TokenStream) -> TokenStream {
-    format!("processor.get_split_arguments({}, args)", item)
+    format!("processor.split_arguments({}, args)", item)
         .parse()
         .unwrap()
 }
