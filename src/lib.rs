@@ -29,11 +29,33 @@ pub fn deterred_template(item: TokenStream) -> TokenStream {
     .unwrap()
 }
 
+/// Deterred macro argument expansion and strip
+///
+/// # Usage
+///
+/// expand_args!(&args[0])
 #[proc_macro]
-pub fn expand(item: TokenStream) -> TokenStream {
-    format!("processor.expand(level,{})", item).parse().unwrap()
+pub fn expand_args(item: TokenStream) -> TokenStream {
+    format!("processor.expand(level,{},true)", item)
+        .parse()
+        .unwrap()
 }
 
+/// Generic expansion without strip
+///
+/// # Usage
+///
+/// expand_expr!("Expresion to expand")
+#[proc_macro]
+pub fn expand_expr(item: TokenStream) -> TokenStream {
+    format!("processor.expand(level,{},false)", item)
+        .parse()
+        .unwrap()
+}
+
+/// Split arguments
+///
+/// split_args!(len,args,)
 #[proc_macro]
 pub fn split_args(item: TokenStream) -> TokenStream {
     format!("processor.get_split_arguments({}, args)", item)
